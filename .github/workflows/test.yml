@@ -27,4 +27,4 @@ jobs:
         mkdir -p /tmp/input-remapper-runner
         sudo chmod -R 0777 /tmp #FIXME permissions error accessing file in /tmp https://gist.github.com/LunNova/2889052e9e46b90ae0a0b32d8599934d
         mkdir -p test_tmp
-        TMPDIR="$(realpath test_tmp)" python tests/test.py unit
+        TMPDIR="$(realpath test_tmp)" sudo python tests/test.py unit
