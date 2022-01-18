@@ -17,5 +17,5 @@ runner:
     format: flake8
 
   black:
-    cmd: black --diff --quiet --check $(git ls-files | egrep "*.py$" --color=no)
+    cmd: black --diff --quiet --check ./inputremapper ./tests
     format: black
