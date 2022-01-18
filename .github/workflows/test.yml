@@ -6,6 +6,7 @@ jobs:
   build:
     continue-on-error: true
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     strategy:
       matrix:
         python-version: ["3.7", "3.10"] # min and max supported versions?
