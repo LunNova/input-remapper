@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           python -m pip install --upgrade pip
-          pip install wheel setuptools flake8 pylint mypy
+          pip install wheel setuptools flake8 pylint mypy black
       - name: Set env for PR
         if: github.event_name == 'pull_request'
         shell: bash
@@ -43,4 +43,4 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           reviewdog -list
-          reviewdog -tee -runners=mypy,pylint,flake8 -reporter=${{ env.REWIEVDOG_REPORTER }} -fail-on-error=false
+          reviewdog -tee -runners=mypy,pylint,flake8,black -reporter=${{ env.REWIEVDOG_REPORTER }} -fail-on-error=false
