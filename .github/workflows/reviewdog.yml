@@ -1,3 +1,8 @@
+---
+name: reviewdog
+on: [push, pull_request]
+
+jobs:
   reviewdog_python:
     # run reviewdog for PR only because "github-check" option is failing :(
     # https://github.com/reviewdog/reviewdog/issues/924
