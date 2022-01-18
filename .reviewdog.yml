@@ -2,7 +2,7 @@
 runner:
   mypy:
     name: mypy
-    cmd: mypy --strict --show-column-numbers inputremapper tests
+    cmd: mypy --show-column-numbers inputremapper tests
     errorformat:
       - "%f:%l:%c: %m"
 
