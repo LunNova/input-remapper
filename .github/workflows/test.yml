@@ -19,9 +19,9 @@ jobs:
       run: |
         sudo apt-get install -y libgirepository1.0-dev gettext python3-gi gobject-introspection \
           gir1.2-gtk-3.0 gir1.2-gtksource-4 libgtksourceview-4-0 libgtksourceview-4-dev
-        python -m pip install --upgrade pip
-        pip install wheel setuptools psutil
-        pip install .
+        sudo python -m pip install --upgrade pip
+        sudo pip install wheel setuptools psutil
+        sudo pip install .
     - name: Run tests
       run: |
         mkdir -p /tmp/input-remapper-runner
