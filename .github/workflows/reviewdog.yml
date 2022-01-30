@@ -25,8 +25,12 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
+          sudo apt-get install -y libgirepository1.0-dev gettext python3-gi gobject-introspection \
+          gir1.2-gtk-3.0 gir1.2-gtksource-4 libgtksourceview-4-0 libgtksourceview-4-dev
           python -m pip install --upgrade pip
           pip install wheel setuptools flake8 pylint mypy black
+          python setup.py egg_info
+          pip install `grep -v '^\[' *.egg-info/requires.txt`
       - name: Set env for PR
         if: github.event_name == 'pull_request'
         shell: bash
