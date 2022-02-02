@@ -18,10 +18,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        sudo apt-get install -y libgirepository1.0-dev gettext python3-gi gobject-introspection \
-          gir1.2-gtk-3.0 gir1.2-gtksource-4 libgtksourceview-4-0 libgtksourceview-4-dev
-        sudo python -m pip install --upgrade pip
-        sudo pip install wheel setuptools psutil
+        scripts/ci-install-deps.sh
         sudo pip install .
     - name: Run tests
       run: |
