@@ -18,14 +18,11 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        sudo apt-get install -y libgirepository1.0-dev gettext python3-gi gobject-introspection \
-          gir1.2-gtk-3.0 gir1.2-gtksource-4 libgtksourceview-4-0 libgtksourceview-4-dev
-        sudo python -m pip install --upgrade pip
-        sudo pip install wheel setuptools psutil
+        # Install deps as root since we will run tests as root
+        sudo scripts/ci-install-deps.sh
         sudo pip install .
     - name: Run tests
       run: |
-        mkdir -p /tmp/input-remapper-runner
-        sudo chmod -R 0777 /tmp #FIXME permissions error accessing file in /tmp https://gist.github.com/LunNova/2889052e9e46b90ae0a0b32d8599934d
-        mkdir -p test_tmp
+        # FIXME: Had some permissions issues, currently worked around by running tests as root
+        mkdir test_tmp
         TMPDIR="$(realpath test_tmp)" sudo python tests/test.py --start-dir unit
