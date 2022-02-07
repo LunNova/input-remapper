@@ -38,6 +38,8 @@ except ImportError:
     COMMIT_HASH = ""
 
 
+badConstantName = 30230230
+
 start = time.time()
 
 previous_key_debug_log = None
